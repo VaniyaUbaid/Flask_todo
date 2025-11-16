@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-Do List </title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+
+    <!-- 🌸 Profile header -->
+    <div class="profile-header">
+      <h2>Hi, {{ username }} 👋</h2>
+      <a href="/logout" class="btn-logout">Logout</a>
+    </div>
+
+    <h1>My To-Do List 🌸</h1>
+
+    <div style="margin-bottom: 20px;">
+        <a href="/add" style="background-color: #ff85a2; padding: 12px 20px; color: white; border-radius: 8px; font-size: 16px;">+ Create New Task</a>
+    </div>
+
+    <table>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Priority</th> <th>Due Date</th> <th>Status</th>
+        <th>Actions</th>
+      </tr>
+
+      {% for task in tasks %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>
+            <strong>{{ task['title'] }}</strong><br>
+            <small>{{ task['description'] }}</small>
+        </td>
+        <td>{{ task['priority'] }}</td>
+        <td>{{ task['due_date'] }}</td>
+        <td>{{ task['status'] }}</td>
+        <td>
+          {% if task['status'] != 'Completed' %}
+          <a href="/complete/{{ task['id'] }}" class="btn-complete">Done</a>
+          {% endif %}
+          <a href="/delete/{{ task['id'] }}" class="btn-delete">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</body>
+</html>

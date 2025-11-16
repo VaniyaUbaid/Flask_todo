@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Task</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Add New Task 🌸</h1>
+    
+    <form method="POST" action="/add" style="flex-direction: column; align-items: center;">
+      
+      <label style="width: 100%; text-align: left; color: #d63384; font-weight: bold;">Title:</label>
+      <input type="text" name="title" required style="width: 90%; margin-bottom: 10px;">
+
+      <label style="width: 100%; text-align: left; color: #d63384; font-weight: bold;">Description:</label>
+      <textarea name="description" style="width: 90%; padding: 10px; border: 2px solid #f8a1c4; border-radius: 8px; outline: none; margin-bottom: 10px;"></textarea>
+
+      <label style="width: 100%; text-align: left; color: #d63384; font-weight: bold;">Due Date:</label>
+      <input type="date" name="due_date" style="width: 90%; padding: 10px; border: 2px solid #f8a1c4; border-radius: 8px; margin-bottom: 10px;">
+
+      <label style="width: 100%; text-align: left; color: #d63384; font-weight: bold;">Priority:</label>
+      <select name="priority" style="width: 95%; padding: 10px; border: 2px solid #f8a1c4; border-radius: 8px; margin-bottom: 20px;">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+
+      <button type="submit" style="width: 100%;">Add Task</button>
+    </form>
+
+    <div style="margin-top: 20px;">
+        <a href="/" style="color: #d63384;">← Back to Dashboard</a>
+    </div>
+    </div>
+</body>
+</html>
